@@ -76,21 +76,19 @@ import { TooltipModule } from 'primeng/primeng';
 import { TreeModule } from 'primeng/primeng';
 import { TreeTableModule } from 'primeng/primeng';
 import { EmployeeComponent } from './employee/employee.component';
-import { EmployeeBasicInfoComponent } from './employee/employee-basic-info/employee-basic-info.component';
-import { EmployeeProjectsComponent } from './employee/employee-projects/employee-projects.component';
 import { EmployeeService } from './services/employee.service';
 import { DatePipe } from './pipes/date.pipe';
 import { ProjectService } from './services/project.service';
 import { ProjectsComponent } from './projects/projects.component';
+import { StatusPipe } from './pipes/project-status.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeComponent,
-    EmployeeBasicInfoComponent,
-    EmployeeProjectsComponent,
     DatePipe,
-    ProjectsComponent
+    ProjectsComponent,
+    StatusPipe
   ],
   imports: [
     BrowserModule,
@@ -101,10 +99,8 @@ import { ProjectsComponent } from './projects/projects.component';
     BrowserAnimationsModule,
     ButtonsModule,
     AppRoutingModule,
-    // EmployeeModule,
     TabViewModule,
     TabMenuModule,
-    AppRoutingModule,
     FormsModule,
     BrowserModule,
     AccordionModule,

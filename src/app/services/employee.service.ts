@@ -21,12 +21,22 @@ export class EmployeeService {
             .map((res: Response) => {
                 return res.json() as Employee[];
             });
+
+
     }
 
     getById(id: number): Observable<Employee> {
         return this.http.get(this.url + '/' + id)
             .map((res: Response) => {
-                return res.json() as Employee;
+                let result = res.json() as Employee;
+                
+            if (result.dateOfBirth) {
+                result.dateOfBirth = new Date(result.dateOfBirth);
+              }
+            //   if (result.endDate) {
+            //     result.endDate = new Date(result.endDate);
+            //   }
+              return result;
             })
     }
 

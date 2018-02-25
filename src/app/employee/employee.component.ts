@@ -27,11 +27,15 @@ export class EmployeeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.employee.firstName = '';
+    this.employee.lastName = '';
     this.employee.projects = [];
     this.items = [
       { label: 'Basic Info', url: 'employee/basicinfo' },
       { label: 'Projects', url: 'employee/projects' }
     ];
+
+    var today = new Date();
 
     this.getAllEmployees();
     this.getAllProjects();
@@ -64,11 +68,16 @@ export class EmployeeComponent implements OnInit {
   }
 
   onCreate() {
-    this.employeeService.createEmployee(this.employee)
-      .subscribe((res: Employee) => {
-        this.employee = res;
-        this.getAllEmployees();
-      })
+    this.employeeService.getById(this.employee.id)
+    .subscribe((res: Employee) => {
+      if (res.id == null) {
+        this.employeeService.createEmployee(this.employee)
+          .subscribe((res: Employee) => {
+            this.employee = res;
+            this.getAllEmployees();
+          })
+        }
+      });
   }
 
   onEdit() {

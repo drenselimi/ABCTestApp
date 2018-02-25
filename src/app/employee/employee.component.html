@@ -1,77 +1,75 @@
-<!-- <div class="ui-g-6 "> -->
-<!-- <p-tabMenu [model]="items" class="ui-tabmenu-nav"></p-tabMenu> -->
-<!-- <router-outlet></router-outlet> -->
-<!-- </div> -->
+<div class="ui-g ui-g-6">
+  <p-tabView>
 
-<!-- <div class="ui-g ui-fluid"> -->
-<p-tabView>
-  <p-tabPanel header="Basic Info">
-    <div class="ui-g-12">
-      <div class="ui-g-6">
-        <div class="card">
-          <!-- <div class="ui-g-12"> -->
-          <div class="ui-g card-title">
-            <h2>Basic Info</h2>
-          </div>
-
-          <div class="ui-md-6">
-            <label>Id </label>
-            <input pInputText type="text" [(ngModel)]="employee.id" name="Id">
-          </div>
-
-          <div class="ui-md-6">
-            <label>Title</label>
-            <input pInputText type="text" [(ngModel)]="employee.title" name="Title" #Title="ngModel">
-          </div>
-
-          <div class="ui-md-6">
-            <label>First Name</label>
-            <input pInputText type="text" [(ngModel)]="employee.firstName">
-          </div>
-
-          <div class="ui-md-6">
-            <label>Last Name</label>
-            <input pInputText type="text" [(ngModel)]="employee.lastName" name="LastName" #LastName="ngModel">
-          </div>
-
-          <div class="ui-md-6">
-            <label>Date of Birth</label>
-            <p-calendar dateFormat="dd/mm/yy" placeholder="dd/mm/yy" readonlyInput="true" [monthNavigator]="true" [yearNavigator]="true"
-              [(ngModel)]="employee.dateOfBirth" name="DateOfBirth" [utc]="true" required></p-calendar>
-          </div>
-
-          <div class="ui-g-6">
-            <button type="button" pButton (click)="onCreate()" label="Create" class="detail-btn"></button>
-          </div>
-          <div class="ui-g-6">
-            <button type="button" pButton (click)="onEdit()" label="Edit" class="detail-btn"></button>
-          </div>
-          <!-- </div> -->
-        </div>
-      </div>
-      <div class="ui-g-6">
-        <div class="card">
-          <div class="ui-g card-title">
-            <h2>Employees list</h2>
-          </div>
-          <!-- <div class="ui-g-6"> -->
-            <p-dataTable emptyMessage="No records found" [value]="employeeList" (onRowClick)="loadEmployeeDetails($event)" [rows]="15"
-              [lazy]="true" [totalRecords]="20">
-              <p-column field="id" header="Id"></p-column>
-              <p-column field="firstName" header="First Name"></p-column>
-              <p-column field="lastName" header="Last Name"></p-column>
-            </p-dataTable>
-          <!-- </div> -->
-        </div>
-      </div>
-
-    </div>
-  </p-tabPanel>
-  <p-tabPanel header="Projects ">
-    <div class="ui-g ui-g-8">
+    <p-tabPanel header="Basic Info" leftIcon="fa-info">
       <div class="card">
         <div class="ui-g card-title">
-          <h2>Projects</h2>
+          <h2>Basic Info</h2>
+        </div>
+
+        <div class="ui-md-3">
+          <label>
+            <strong>Id</strong>
+          </label>
+          <input pInputText type="text" [(ngModel)]="employee.id" name="Id">
+        </div>
+
+        <div class="ui-md-3">
+          <label>
+            <strong>Title</strong>
+          </label>
+          <input pInputText type="text" [(ngModel)]="employee.title" name="Title" #Title="ngModel">
+        </div>
+
+        <div class="ui-md-3">
+          <label>
+            <strong>First Name</strong>
+          </label>
+          <input pInputText type="text" [(ngModel)]="employee.firstName">
+        </div>
+
+        <div class="ui-md-3">
+          <label>
+            <strong>Last Name</strong>
+          </label>
+          <input pInputText type="text" [(ngModel)]="employee.lastName" name="LastName" #LastName="ngModel">
+        </div>
+
+        <div class="ui-md-3">
+          <label>
+            <strong>Date of Birth</strong>
+          </label>
+          <p-calendar dateFormat="dd/mm/yy" placeholder="dd/mm/yy" readonlyInput="true" [monthNavigator]="true" [yearNavigator]="true"
+            [(ngModel)]="employee.dateOfBirth" name="DateOfBirth" [utc]="true" required></p-calendar>
+        </div>
+
+        <div class="ui-md-6">
+          <button type="button" pButton (click)="onCreate()" label="Create" class="detail-btn"></button>
+
+          <button type="button" pButton (click)="onEdit()" label="Edit" class="detail-btn"></button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ui-g card-title">
+          <h2>Employees list</h2>
+        </div>
+        <p-dataTable emptyMessage="No records found" [paginator]="true" [value]="employeeList" (onRowClick)="loadEmployeeDetails($event)"
+          [rows]="15" [lazy]="true" [totalRecords]="employeeList.Count">
+          <p-column field="id" header="Id"></p-column>
+          <p-column field="firstName" header="First Name"></p-column>
+          <p-column field="lastName" header="Last Name"></p-column>
+        </p-dataTable>
+
+      </div>
+
+
+    </p-tabPanel>
+
+    <p-tabPanel header="Projects ">
+
+      <div class="card">
+        <div class="ui-g card-title">
+          <h2>Projects related to employee {{employee.firstName + ' ' + employee.lastName}}</h2>
         </div>
 
         <p-dataTable emptyMessage="No records found" [value]="projects" [rows]="15" [lazy]="true" [totalRecords]="20">
@@ -80,10 +78,9 @@
         </p-dataTable>
       </div>
 
-
       <div class="card">
         <div class="ui-g card-title">
-          <h2>Employee grid</h2>
+          <h2>Employee list</h2>
         </div>
 
         <p-dataTable emptyMessage="No records found" [value]="employeeList" (onRowClick)="loadEmployeeProjects($event)" [rows]="15"
@@ -93,8 +90,7 @@
           <p-column field="lastName" header="Last Name"></p-column>
         </p-dataTable>
       </div>
-    </div>
-  </p-tabPanel>
-</p-tabView>
+    </p-tabPanel>
 
-<!-- </div> -->
+  </p-tabView>
+</div>

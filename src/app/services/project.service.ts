@@ -24,8 +24,17 @@ export class ProjectService {
 
     getById(id: number): Observable<Project> {
         return this.http.get(this.url + '/' + id)
+            
             .map((res: Response) => {
-                return res.json() as Project;
+                let result = res.json() as Project;
+                
+            if (result.startDate) {
+                result.startDate = new Date(result.startDate);
+              }
+              if (result.endDate) {
+                result.endDate = new Date(result.endDate);
+              }
+              return result;
             })
     }
 

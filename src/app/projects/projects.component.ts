@@ -10,8 +10,9 @@ import { SelectItem } from 'primeng/primeng';
 })
 export class ProjectsComponent implements OnInit {
 
+  today: any;
   project: Project = new Project();
-  projects: Project[] = [];
+  projectList: Project[] = [];
 
   list: SelectItem[];
 
@@ -20,6 +21,7 @@ export class ProjectsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.today = new Date();
     this.list = [    
       { label: 'Active', value: '1' },
       { label: 'Passive', value: '2' }
@@ -47,13 +49,12 @@ export class ProjectsComponent implements OnInit {
             })
         }
       })
-
   }
 
   getAllProjects() {
     this.projectService.getAll()
       .subscribe((res: Project[]) => {
-        this.projects = res;
+        this.projectList = res;
       })
   }
 
@@ -61,6 +62,11 @@ export class ProjectsComponent implements OnInit {
     this.projectService.getById(id)
       .subscribe((res: Project) => {
         this.project = res;
+        if (this.project.endDate < this.today) {
+          this.project.status = 'ACTIVE';
+        } else if(this.project.endDate > this.today){
+          this.project.status = 'NOT_ACTIVE';
+        }
       })
   }
 

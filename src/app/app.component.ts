@@ -7,13 +7,14 @@ import { MenuItem } from 'primeng/primeng';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+
   items: MenuItem[];
-  onButtonClick() {
-    this.title = 'Hello from Kendo UI!';
+
+  ngOnInit() {
     this.items = [
-      { label: 'Employee', url: 'employee' },
-      { label: 'Projects', url: 'projects' }
+      { label: 'Employee', icon: 'fa-user', url: 'employee' },
+      { label: 'Projects', icon: 'fa-book', url: 'projects' }
     ];
   }
+
 }

@@ -52,21 +52,51 @@
       "firstName": "dre",
       "lastName": "selimi",
       "title": "test"
+    },
+    {
+      "id": "5",
+      "firstName": "Dren",
+      "lastName": "Selimi",
+      "title": "Mr.",
+      "dateOfBirth": "2017-07-27T00:00:00.000Z",
+      "projects": [
+        {
+          "id": 1,
+          "name": "Project 1",
+          "startDate": "2017-10-31T22:00:00Z",
+          "endDate": "2017-11-29T22:00:00Z",
+          "status": "ACTIVE"
+        },
+        {
+          "id": 2,
+          "name": "Project 2",
+          "startDate": "2017-10-31T22:00:00Z",
+          "endDate": "2017-11-29T22:00:00Z",
+          "status": "ACTIVE"
+        }
+      ]
     }
   ],
   "projects": [
     {
       "id": 1,
       "name": "Project 1",
-      "startDate": "2017-10-31T22:00:00Z",
-      "endDate": "2017-11-29T22:00:00Z",
-      "status": "2"
+      "startDate": "2017-10-31T22:00:00.000Z",
+      "endDate": "2017-11-29T22:00:00.000Z",
+      "status": "ACTIVE"
     },
     {
       "id": 2,
       "name": "Project 2",
-      "startDate": "2017-10-31T22:00:00Z",
-      "endDate": "2017-11-29T22:00:00Z",
+      "startDate": "2017-10-31T22:00:00.000Z",
+      "endDate": "2017-11-29T22:00:00.000Z",
+      "status": "ACTIVE"
+    },
+    {
+      "endDate": "2018-02-28T00:00:00.000Z",
+      "startDate": "2018-02-20T00:00:00.000Z",
+      "name": "Project 3",
+      "id": "3",
       "status": "ACTIVE"
     }
   ]
