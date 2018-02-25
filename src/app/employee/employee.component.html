@@ -1,3 +1,5 @@
+
+
 <div class="ui-g ui-g-6">
   <p-tabView>
 
@@ -9,7 +11,7 @@
 
         <div class="ui-md-3">
           <label>
-            <strong>Id</strong>
+            <strong>ID</strong>
           </label>
           <input pInputText type="text" [(ngModel)]="employee.id" name="Id">
         </div>
@@ -55,7 +57,7 @@
         </div>
         <p-dataTable emptyMessage="No records found" [paginator]="true" [value]="employeeList" (onRowClick)="loadEmployeeDetails($event)"
           [rows]="15" [lazy]="true" [totalRecords]="employeeList.Count">
-          <p-column field="id" header="Id"></p-column>
+          <p-column field="id" header="ID"></p-column>
           <p-column field="firstName" header="First Name"></p-column>
           <p-column field="lastName" header="Last Name"></p-column>
         </p-dataTable>
@@ -73,7 +75,7 @@
         </div>
 
         <p-dataTable emptyMessage="No records found" [value]="projects" [rows]="15" [lazy]="true" [totalRecords]="20">
-          <p-column field="id" header="Id"></p-column>
+          <p-column field="id" header="ID"></p-column>
           <p-column field="name" header="Name"></p-column>
         </p-dataTable>
       </div>
@@ -85,7 +87,7 @@
 
         <p-dataTable emptyMessage="No records found" [value]="employeeList" (onRowClick)="loadEmployeeProjects($event)" [rows]="15"
           [lazy]="true" [totalRecords]="20">
-          <p-column field="id" header="Id"></p-column>
+          <p-column field="id" header="ID"></p-column>
           <p-column field="firstName" header="First Name"></p-column>
           <p-column field="lastName" header="Last Name"></p-column>
         </p-dataTable>
@@ -94,3 +96,6 @@
 
   </p-tabView>
 </div>
+
+<div class="ui-g-3"><p-messages [value]="msgs"></p-messages></div>
+

@@ -5,6 +5,7 @@ import { Project } from '../models/project';
 import { EmployeeService } from '../services/employee.service';
 import { Subscriber } from 'rxjs';
 import { ProjectService } from '../services/project.service';
+import { MessageService } from 'primeng/components/common/messageservice';
 
 @Component({
   selector: 'app-employee',
@@ -23,7 +24,8 @@ export class EmployeeComponent implements OnInit {
 
   constructor(
     private employeeService: EmployeeService,
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit() {
@@ -40,6 +42,7 @@ export class EmployeeComponent implements OnInit {
     this.getAllEmployees();
     this.getAllProjects();
   }
+
 
   getAllEmployees() {
     this.employeeService.getAll()
@@ -69,15 +72,20 @@ export class EmployeeComponent implements OnInit {
 
   onCreate() {
     this.employeeService.getById(this.employee.id)
-    .subscribe((res: Employee) => {
-      if (res.id == null) {
-        this.employeeService.createEmployee(this.employee)
-          .subscribe((res: Employee) => {
-            this.employee = res;
-            this.getAllEmployees();
-          })
+      .subscribe((res: Employee) => {
+        if (res.id == null) {
+          this.employeeService.createEmployee(this.employee)
+            .subscribe((res: Employee) => {
+              this.employee = res;
+              this.getAllEmployees();
+            })
+        } else {
+          this.messageService.add({ severity: 'error', summary: 'System Message', detail: 'An user with this ID already exists' });
         }
-      });
+      },
+        error => {
+          console.log(error);
+        });
   }
 
   onEdit() {
@@ -89,10 +97,15 @@ export class EmployeeComponent implements OnInit {
               this.employee = res;
               this.getAllEmployees();
             })
+        } else {
+          this.messageService.add({ severity: 'error', summary: 'System Message', detail: 'There is no user with this ID to edit' });
         }
 
         this.projects = this.employee.projects;
-      })
+      },
+      error => {
+        console.log(error);
+      });
 
   }
 

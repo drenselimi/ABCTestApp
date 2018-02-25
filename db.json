@@ -44,14 +44,16 @@
       "id": "4",
       "firstName": "test",
       "lastName": "test",
-      "title": "test"
+      "title": "test",
+      "dateOfBirth": "2018-02-26T00:00:00.000Z"
     },
     {
       "projects": [],
       "id": "3",
       "firstName": "dre",
       "lastName": "selimi",
-      "title": "test"
+      "title": "test",
+      "dateOfBirth": "2018-02-13T00:00:00.000Z"
     },
     {
       "id": "5",

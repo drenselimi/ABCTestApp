@@ -81,6 +81,7 @@ import { DatePipe } from './pipes/date.pipe';
 import { ProjectService } from './services/project.service';
 import { ProjectsComponent } from './projects/projects.component';
 import { StatusPipe } from './pipes/project-status.pipe';
+import { MessageService } from 'primeng/components/common/messageservice';
 
 @NgModule({
   declarations: [
@@ -170,7 +171,8 @@ import { StatusPipe } from './pipes/project-status.pipe';
   ],
   providers: [
     EmployeeService,
-    ProjectService
+    ProjectService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

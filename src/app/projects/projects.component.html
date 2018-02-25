@@ -6,7 +6,7 @@
     </div>
 
     <div class="ui-md-6">
-      <label>Id</label>
+      <label>ID</label>
       <input pInputText type="text" [(ngModel)]="project.id" name="Id">
     </div>
 
@@ -54,7 +54,7 @@
 
     <p-dataTable emptyMessage="No records found" [paginator]=true [value]="projectList" (onRowClick)="onRowClick($event)" [rows]="15"
       [lazy]="true" [totalRecords]="projectList.count">
-      <p-column field="id" header="Id"></p-column>
+      <p-column field="id" header="ID"></p-column>
       <p-column field="name" header="Name"></p-column>
     </p-dataTable>
   </div>
