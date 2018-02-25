@@ -1,0 +1,62 @@
+<p>
+  projects works!
+</p>
+
+<div class="ui-g ui-fluid">
+  <div class="ui-g-12">
+    <div class="ui-g-3">
+
+      <div class="card">
+        <div class="ui-g card-title">
+          <h2>Basic Info</h2>
+        </div>
+
+        <div class="ui-md-6">
+          <label>Id </label>
+          <input pInputText type="text" [(ngModel)]="project.id" name="Id">
+        </div>
+
+        <div class="ui-md-6">
+          <label>Start date</label>
+          <p-calendar dateFormat="dd/mm/yy" placeholder="dd/mm/yy" readonlyInput="true" [monthNavigator]="true" [yearNavigator]="true"
+            [(ngModel)]="project.startDate" name="StartDate" [utc]="true" required></p-calendar>
+        </div>
+
+        <div class="ui-md-6">
+          <label>End Date</label>
+          <p-calendar dateFormat="dd/mm/yy" placeholder="dd/mm/yy" readonlyInput="true" [monthNavigator]="true" [yearNavigator]="true"
+            [(ngModel)]="project.endDate" name="EndDate" [utc]="true" required></p-calendar>
+        </div>
+
+        <div class="ui-md-6">
+          <label>Status</label>
+          <p-dropdown [options]="list" name="Status" [(ngModel)]="project.status" required></p-dropdown>
+        </div>
+        <div class="ui-g-6">
+          <button type="button" pButton (click)="onCreate()" label="Create" class="detail-btn"></button>
+        </div>
+        <div class="ui-g-6">
+          <button type="button" pButton (click)="onEdit()" label="Edit" class="detail-btn"></button>
+        </div>
+
+
+      </div>
+    </div>
+    
+    <div class="ui-g-6">
+
+      <div class="card">
+        <div class="ui-g card-title">
+          <h2>Projects</h2>
+        </div>
+
+        <p-dataTable emptyMessage="No records found" [value]="projects" (onRowClick)="onRowClick($event)" [rows]="15" [lazy]="true"
+          [totalRecords]="20">
+          <p-column field="id" header="Id"></p-column>
+          <p-column field="name" header="Name"></p-column>
+        </p-dataTable>
+      </div>
+    </div>
+
+  </div>
+</div>
