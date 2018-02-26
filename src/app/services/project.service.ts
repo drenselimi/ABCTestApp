@@ -38,14 +38,14 @@ export class ProjectService {
             })
     }
 
-    createEmployee(project: Project): Observable<Project> {
+    createProject(project: Project): Observable<Project> {
         return this.http.post(this.url, project)
             .map((res: Response) => {
                 return res.json() as Project;
             });
     }
 
-    updateEmployee(project: Project): Observable<Project> {
+    updateProject(project: Project): Observable<Project> {
         return this.http.put(this.url + '/' + project.id, project)
             .map((res: Response) => {
                 return res.json() as Project;

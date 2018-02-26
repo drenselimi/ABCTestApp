@@ -30,7 +30,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   onCreate() {
-    this.projectService.createEmployee(this.project)
+    this.projectService.createProject(this.project)
       .subscribe((res: Project) => {
         this.project = res;
         this.getAllProjects();
@@ -41,7 +41,8 @@ export class ProjectsComponent implements OnInit {
     this.projectService.getById(this.project.id)
       .subscribe((res: Project) => {
         if (res.id != null) {
-          this.projectService.updateEmployee(this.project)
+          
+          this.projectService.updateProject(this.project)
             .subscribe((res: Project) => {
               this.project = res;
               this.getAllProjects();
