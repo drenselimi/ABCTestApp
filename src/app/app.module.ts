@@ -82,91 +82,52 @@ import { ProjectService } from './services/project.service';
 import { ProjectsComponent } from './projects/projects.component';
 import { StatusPipe } from './pipes/project-status.pipe';
 import { MessageService } from 'primeng/components/common/messageservice';
+import { ProjectsModule } from './projects/projects.module';
+import { EmployeeModule } from './employee/employee.module';
+import { HttpClientModule } from '@angular/common/http';
+import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
+import { ProjectsListComponent } from './projects/projects-list/projects-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeComponent,
     DatePipe,
-    ProjectsComponent,
-    StatusPipe
+    ProjectsComponent,  
+    StatusPipe,
+    EmployeeListComponent,
+    ProjectsListComponent
   ],
   imports: [
+
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     HttpModule,
 
     // Register the modules
     BrowserAnimationsModule,
+    CalendarModule,
     ButtonsModule,
     AppRoutingModule,
     TabViewModule,
     TabMenuModule,
     FormsModule,
-    BrowserModule,
-    AccordionModule,
-    AutoCompleteModule,
     BreadcrumbModule,
     ButtonModule,
-    CalendarModule,
-    CarouselModule,
-    ChartModule,
-    CheckboxModule,
-    ChipsModule,
-    CodeHighlighterModule,
-    ConfirmDialogModule,
-    SharedModule,
-    ContextMenuModule,
-    DataGridModule,
-    DataListModule,
-    DataScrollerModule,
     DataTableModule,
-    DialogModule,
-    DragDropModule,
-    DropdownModule,
-    EditorModule,
-    FieldsetModule,
-    FileUploadModule,
-    GalleriaModule,
-    GMapModule,
     GrowlModule,
     InputMaskModule,
-    InputSwitchModule,
     InputTextModule,
-    InputTextareaModule,
-    LightboxModule,
-    ListboxModule,
-    MegaMenuModule,
     MenuModule,
     MenubarModule,
     MessagesModule,
-    MultiSelectModule,
-    OrderListModule,
     OverlayPanelModule,
     PaginatorModule,
     PanelModule,
     PanelMenuModule,
-    PasswordModule,
-    PickListModule,
-    ProgressBarModule,
-    RadioButtonModule,
-    RatingModule,
-    ScheduleModule,
-    SelectButtonModule,
-    SlideMenuModule,
-    SliderModule,
-    SpinnerModule,
-    SplitButtonModule,
-    StepsModule,
     TabMenuModule,
-    TabViewModule,
-    TerminalModule,
-    TieredMenuModule,
-    ToggleButtonModule,
-    ToolbarModule,
-    TooltipModule,
-    TreeModule,
-    TreeTableModule,
+    TabViewModule
     
   ],
   providers: [

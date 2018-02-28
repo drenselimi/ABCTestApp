@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="ui-g card-title">
+    <h2>Employee list</h2>
+  </div>
+  
+  <p-dataTable emptyMessage="No records found" [value]="employeeList" (onRowClick)="onRowClick($event)" [rows]="10"
+     [paginator]="true"  [totalRecords]="employeeList.count" >
+    <p-column field="id" header="ID"></p-column>
+    <p-column field="firstName" header="First Name"></p-column>
+    <p-column field="lastName" header="Last Name"></p-column>
+  </p-dataTable>
+</div>

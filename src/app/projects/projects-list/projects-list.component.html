@@ -1,0 +1,5 @@
+<p-dataTable emptyMessage="No records found" (onRowClick)="onRowClick($event)" [value]="projectList" [rows]="15" [lazy]="true"
+  [totalRecords]="20" [paginator]="true">
+  <p-column field="id" header="ID"></p-column>
+  <p-column field="name" header="Name"></p-column>
+</p-dataTable>

@@ -1,5 +1,6 @@
 <div class="ui-g ui-g-6">
 
+  <!-- Project Basic Info -->
   <div class="card">
     <div class="ui-g card-title">
       <h2>Basic Info</h2>
@@ -18,25 +19,19 @@
     <div class="ui-md-6">
       <label>Start date</label>
       <p-calendar dateFormat="dd/mm/yy" placeholder="dd/mm/yy" readonlyInput="true" [monthNavigator]="true" [yearNavigator]="true"
-        [(ngModel)]="project.startDate" name="StartDate" [utc]="true" required></p-calendar>
+        [(ngModel)]="project.startDate" yearRange="1990:{{actualYear}}" name="StartDate" [utc]="true" required></p-calendar>
     </div>
 
     <div class="ui-md-6">
       <label>End Date</label>
       <p-calendar dateFormat="dd/mm/yy" placeholder="dd/mm/yy" readonlyInput="true" [monthNavigator]="true" [yearNavigator]="true"
-        [(ngModel)]="project.endDate" name="EndDate" [utc]="true" required></p-calendar>
+        [(ngModel)]="project.endDate"  yearRange="1990:{{actualYear}}" name="EndDate" [utc]="true" required></p-calendar>
     </div>
 
     <div class="ui-md-6">
       <label>Status </label>
       <div>{{project.status | projectStatus}}</div>
-      <!-- <input pInputText type="text" [(ngModel)]="project.status" name="Name"> -->
     </div>
-
-    <!-- <div class="ui-md-6">
-      <label>Status</label>
-      <p-dropdown [options]="list" name="Status" [(ngModel)]="project.status" required></p-dropdown>
-    </div> -->
 
     <div class="ui-g-6">
       <button type="button" pButton (click)="onCreate()" label="Create" class="detail-btn"></button>
@@ -47,15 +42,21 @@
 
 
   </div>
+
+
+
+  <!-- List of Projects -->
   <div class="card">
     <div class="ui-g card-title">
-      <h2>Projects</h2>
+      <h2>Projects List</h2>
     </div>
 
-    <p-dataTable emptyMessage="No records found" [paginator]=true [value]="projectList" (onRowClick)="onRowClick($event)" [rows]="15"
-      [lazy]="true" [totalRecords]="projectList.count">
-      <p-column field="id" header="ID"></p-column>
-      <p-column field="name" header="Name"></p-column>
-    </p-dataTable>
+    <app-projects-list [projectList]="projectList" (rowClick)="loadProjectDetails($event)"></app-projects-list>
+
   </div>
+
+</div>
+
+<div class="ui-g-3">
+  <p-messages [value]="msgs"></p-messages>
 </div>

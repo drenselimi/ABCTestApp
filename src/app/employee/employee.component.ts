@@ -14,7 +14,8 @@ import { MessageService } from 'primeng/components/common/messageservice';
 export class EmployeeComponent implements OnInit {
 
   items: MenuItem[];
-  index: number = 0;
+
+  
 
   employee: Employee = new Employee();
   employeeList: Employee[] = [];
@@ -31,22 +32,19 @@ export class EmployeeComponent implements OnInit {
     this.employee.firstName = '';
     this.employee.lastName = '';
     this.employee.projects = [];
+
     this.items = [
       { label: 'Basic Info', url: 'employee/basicinfo' },
       { label: 'Projects', url: 'employee/projects' }
     ];
 
-    var today = new Date();
-
     this.getAllEmployees();
     this.getAllProjects();
   }
 
-
   getAllEmployees() {
     this.employeeService.getAll()
       .subscribe((res: Employee[]) => {
-        console.log(res);
         this.employeeList = res;
       });
   }
@@ -56,17 +54,15 @@ export class EmployeeComponent implements OnInit {
       .subscribe((res: Employee) => {
         this.employee = res;
         this.projects = this.employee.projects;
-      })
+      });
   }
 
   loadEmployeeProjects(event) {
-    this.getById(event.data.id);
-    console.log("hello");
+    this.getById(event);
   }
 
-  loadEmployeeDetails(event) {
-    this.getById(event.data.id);
-    console.log("hello");
+  loadEmployeeDetails(id) {
+    this.getById(id);
   }
 
   onCreate() {
@@ -79,12 +75,13 @@ export class EmployeeComponent implements OnInit {
               this.getAllEmployees();
             })
         } else {
-          this.messageService.add({ severity: 'error', summary: 'System Message', detail: 'An user with this ID already exists' });
+          this.messageService.add({
+            severity: 'error',
+            summary: 'System Message',
+            detail: 'An user with this ID already exists'
+          });
         }
-      },
-        error => {
-          console.log(error);
-        });
+      });
   }
 
   onEdit() {
@@ -97,15 +94,15 @@ export class EmployeeComponent implements OnInit {
               this.getAllEmployees();
             })
         } else {
-          this.messageService.add({ severity: 'error', summary: 'System Message', detail: 'There is no user with this ID to edit' });
+          this.messageService.add({
+            severity: 'error',
+            summary: 'System Message',
+            detail: 'There is no user with this ID to edit'
+          });
         }
 
         this.projects = this.employee.projects;
-      },
-      error => {
-        console.log(error);
       });
-
   }
 
   getAllProjects() {
