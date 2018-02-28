@@ -67,6 +67,14 @@ export class ProjectsComponent implements OnInit {
 
   }
 
+  onSelectDate(date) {
+    if (date < this.today) {
+      this.project.status = 'ACTIVE';
+    } else if (date > this.today) {
+      this.project.status = 'NOT_ACTIVE';
+    }
+  }
+
   onEdit() {
     if (this.project.endDate < this.today) {
       this.project.status = 'ACTIVE';
